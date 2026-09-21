@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+
+    <!-- Recuerda el modo claro/oscuro antes de que cargue la página -->
+    <script>
+        const temaGuardado = localStorage.getItem("tema") || "light";
+        document.documentElement.setAttribute("data-theme", temaGuardado);
+    </script>
+
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="estilos.css">
+
+    <!-- Iconos (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header id="arriba">
+        <h1>Mi Página Web</h1>
+        <p>Mi página web en construcción</p>
+    </header>
+
+
+    <!-- MENÚ -->
+    <nav>
+        <ul>
+            <li><a href="#arriba">Inicio</a></li>
+            <li><a href="quienes.html">¿Quiénes somos?</a></li>
+            <li><a href="#productos">Nuestros servicios</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="sucursales.html">Sucursales</a></li>
+            <li><a href="#redes">Redes Sociales</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#contacto">Contáctenos</a></li>
+            <li>
+                <!-- Botón de modo oscuro -->
+                <button class="btn-modo" id="btnModo" type="button">
+                    <i class="fa-solid fa-moon icono-luna"></i>
+                    <i class="fa-solid fa-sun icono-sol"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- CONTENIDO -->
+    <main id="inicio">
+
+        <h2 id="productos">Nuestros servicios</h2>
+
+        <div class="padre">
+
+            <!-- PRIMERA TARJETA -->
+            <div class="nieto">
+                <h2>Comercio Electrónico</h2>
+                <img src="fotos/imagen1.avif" alt="Comercio electrónico">
+                <p>
+                    Creamos soluciones para que
+                    puedas vender tus productos
+                    por Internet.
+                </p>
+                <button class="btn" type="button" onclick="">Más información</button>
+            </div>
+
+            <!-- SEGUNDA TARJETA -->
+            <div class="nieto">
+                <h2>Marketing Digital</h2>
+                <img src="fotos/imagen3.avif" alt="Marketing digital">
+                <p>
+                    Ayudamos a mejorar la presencia
+                    de tu empresa en Internet.
+                </p>
+                <button class="btn" type="button" id="btnMarketing">Más información</button>
+            </div>
+
+            <!-- TERCERA TARJETA -->
+            <div class="nieto">
+                <h2>Diseño Web</h2>
+                <img src="fotos/imagen1.avif" alt="Diseño web">
+                <p>
+                    Diseñamos páginas web sencillas,
+                    modernas y fáciles de utilizar.
+                </p>
+                <button class="btn" type="button" onclick="mostrarMensaje()">Más información</button>
+            </div>
+
+        </div>
+
+        <!-- CONTACTO -->
+    <div class="contacto-flotante">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScXl-iEX4FHXaLjmpimV0opxzUUq5Xmf3Lpy7JB1bf5YSgqIQ/viewform?usp=dialog"
+       class="btn-contacto" target="_blank" rel="noopener noreferrer">
+        📞 Contacto
+     </a>
+    </div>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="pie" id="redes">
+
+        <p>Mis Redes Sociales</p>
+
+        <div class="redes">
+
+            <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+        </div>
+
+        <p>© 2026 Mi Página Web</p>
+        <p>Derechos Reservados del Diseñador: Cristian Chipana Santos</p>
+
+        <a href="#arriba" class="subir">Volver arriba ↑</a>
+
+
+
+    </footer>
+
+
+    <!-- Aviso que aparece al presionar los botones -->
+    <div class="aviso" id="aviso"></div>
+
+
+    <!-- JavaScript -->
+    <script src="dinamica1.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:wght@400;500;700&display=swap");
+
+/* ---------- Variables (aquí cambias los colores de toda la página) ---------- */
+:root {
+    --tinta: #0d2b3e;
+    --mar: #147d8c;
+    --niebla: #eaf1f4;
+    --boya: #f5b82e;
+    --linea: #d3e0e6;
+    --texto: #2b4152;
+    --blanco: #ffffff;
+
+    --fuente-titulos: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --fuente-texto: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    /* Margen lateral: crece en pantallas grandes para centrar el contenido */
+    --lateral: max(24px, calc((100vw - 1240px) / 2 + 24px));
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--niebla);
+    color: var(--texto);
+    font-family: var(--fuente-texto);
+    line-height: 1.5;
+}
+
+/* ---------- Cabecera flotante con bordes redondeados ---------- */
+header {
+    position: sticky;
+    top: 14px;
+    z-index: 20;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 16px;
+    margin: 14px var(--lateral) 0;
+    padding: 12px 14px 18px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 36px;
+    background: rgba(13, 43, 62, 0.9);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    color: var(--blanco);
+    box-shadow: 0 10px 30px rgba(13, 43, 62, 0.18);
+    transition: box-shadow 0.3s ease;
+}
+
+header.scrolled {
+    box-shadow: 0 16px 38px rgba(13, 43, 62, 0.32);
+}
+
+/* Título con insignia circular (pin de ubicación) */
+header h1 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+header h1::before {
+    content: "";
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--boya)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230d2b3e' d='M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E")
+        center / 22px no-repeat;
+    box-shadow: 0 0 0 5px rgba(245, 184, 46, 0.22);
+}
+
+header nav ul {
+    display: flex;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav a {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--blanco);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+header nav a:hover {
+    background: var(--boya);
+    color: var(--tinta);
+}
+
+header nav a:focus-visible {
+    outline: 3px solid var(--boya);
+    outline-offset: 2px;
+}
+
+/* La línea de abajo es una barra de progreso del scroll con extremos redondos */
+header hr {
+    position: absolute;
+    left: 36px;
+    right: 36px;
+    bottom: 7px;
+    height: 3px;
+    margin: 0;
+    border: 0;
+    border-radius: 3px;
+    background: linear-gradient(
+        90deg,
+        var(--boya) var(--progreso, 0%),
+        rgba(255, 255, 255, 0.14) var(--progreso, 0%)
+    );
+}
+
+/* ---------- Estructura principal ---------- */
+.Padre {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+    padding: 32px var(--lateral) 56px;
+}
+
+.hijo {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ---------- Tarjetas de sucursales ---------- */
+.nieto {
+    position: relative;
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    column-gap: 18px;
+    row-gap: 4px;
+    padding: 14px;
+    background: var(--blanco);
+    border: 1px solid var(--linea);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.nieto h2 {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+    margin: 0;
+    color: var(--tinta);
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.nieto img {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: 128px;
+    height: 112px;
+    object-fit: cover;
+    border-radius: 14px;
+    filter: saturate(0.75);
+    transition: filter 0.3s ease;
+}
+
+.nieto p {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    margin: 0;
+    font-size: 0.93rem;
+    line-height: 1.55;
+}
+
+/* Barra amarilla que aparece en la tarjeta seleccionada */
+.nieto::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 14px;
+    bottom: 14px;
+    width: 4px;
+    border-radius: 0 4px 4px 0;
+    background: var(--boya);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.nieto:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(13, 43, 62, 0.1);
+}
+
+.nieto:hover img {
+    filter: saturate(1);
+}
+
+.nieto:focus-visible {
+    outline: 3px solid var(--mar);
+    outline-offset: 3px;
+}
+
+.nieto.activa {
+    border-color: var(--mar);
+    box-shadow: 0 0 0 1px var(--mar), 0 12px 28px rgba(20, 125, 140, 0.16);
+}
+
+.nieto.activa::before {
+    transform: scaleY(1);
+}
+
+.nieto.activa img {
+    filter: saturate(1.1);
+}
+
+/* ---------- Animación de entrada (se activa solo si JavaScript funciona) ---------- */
+.js .nieto:not(.visible) {
+    opacity: 0;
+}
+
+.nieto.visible {
+    animation: entrar 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) var(--retraso, 0ms) backwards;
+}
+
+@keyframes entrar {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+}
+
+/* ---------- Panel del mapa ---------- */
+.hijo2 {
+    position: sticky;
+    top: 112px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: calc(100vh - 144px);
+    min-height: 440px;
+    max-height: 720px;
+    scroll-margin-top: 112px;
+}
+
+.botones-mapa {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.botones-mapa button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--linea);
+    border-radius: 999px;
+    background: var(--blanco);
+    color: var(--tinta);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.botones-mapa button::before {
+    content: "";
+    width: 0;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--boya);
+    transition: width 0.25s ease;
+}
+
+.botones-mapa button:hover {
+    border-color: var(--mar);
+}
+
+.botones-mapa button:focus-visible {
+    outline: 3px solid var(--mar);
+    outline-offset: 2px;
+}
+
+.botones-mapa button[aria-pressed="true"] {
+    background: var(--tinta);
+    border-color: var(--tinta);
+    color: var(--blanco);
+}
+
+.botones-mapa button[aria-pressed="true"]::before {
+    width: 8px;
+}
+
+.hijo2 iframe {
+    flex: 1;
+    width: 100%;
+    min-height: 320px;
+    border: 1px solid var(--linea);
+    border-radius: 22px;
+    background: #dfe9ee;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Mientras el mapa carga, se ve apagado */
+.hijo2 iframe.cargando {
+    opacity: 0.35;
+    filter: saturate(0.5);
+}
+
+/* ---------- Pie de página ---------- */
+.pie {
+    padding: 22px var(--lateral);
+    background: var(--tinta);
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* ---------- Tablet y celular ---------- */
+@media (max-width: 900px) {
+    .Padre {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 24px;
+    }
+
+    /* En celular el mapa va primero y deja de estar fijo */
+    .hijo2 {
+        order: -1;
+        position: static;
+        height: 420px;
+        min-height: 0;
+        max-height: none;
+    }
+}
+
+@media (max-width: 560px) {
+    header {
+        top: 10px;
+        margin-top: 10px;
+        border-radius: 28px;
+    }
+
+    header h1::before {
+        width: 36px;
+        height: 36px;
+        background-size: 18px;
+    }
+
+    .nieto {
+        grid-template-columns: 1fr;
+    }
+
+    .nieto img,
+    .nieto h2,
+    .nieto p {
+        grid-column: 1;
+    }
+
+    .nieto img {
+        grid-row: 1;
+        width: 100%;
+        height: 170px;
+        margin-bottom: 8px;
+    }
+
+    .nieto h2 {
+        grid-row: 2;
+    }
+
+    .nieto p {
+        grid-row: 3;
+    }
+}
+
+/* ---------- Accesibilidad: respeta a quien no quiere animaciones ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+    }
+}

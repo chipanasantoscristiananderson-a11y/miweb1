@@ -1,0 +1,381 @@
+/* =================================
+FUENTES
+================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap");
+
+/* =================================
+COLORES
+Modo claro (por defecto)
+================================= */
+
+:root {
+    --fondo: #eaf1f4;
+    --tarjeta: #ffffff;
+    --texto: #2b4152;
+    --titulo: #0d2b3e;
+    --linea: #d3e0e6;
+    --panel: #0d2b3e;
+
+    --acento: #147d8c;
+    --acento-oscuro: #0b5f6b;
+    --boya: #f5b82e;
+    --texto-boton: #ffffff;
+
+    --fuente-titulos: "Bricolage Grotesque", "Segoe UI", sans-serif;
+    --fuente-texto: "DM Sans", "Segoe UI", sans-serif;
+}
+
+/* Modo oscuro: solo cambian los colores */
+html[data-theme="dark"] {
+    --fondo: #000000;
+    --tarjeta: #10283a;
+    --texto: #b9ccd8;
+    --titulo: #e9e9ee;
+    --linea: #1f3d52;
+    --panel: #0f3147;
+
+    --acento: #1aa3b5;
+    --acento-oscuro: #0f6f7c;
+    --texto-boton: #04222c;
+}
+
+/* =================================
+CONFIGURACIÓN GENERAL
+================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+[id] {
+    scroll-margin-top: 90px;
+}
+
+body {
+    margin: 0;
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: var(--fuente-texto);
+    line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* =================================
+ENCABEZADO
+================================= */
+
+header {
+    width: 90%;
+    max-width: 1100px;
+    margin: 16px auto 0;
+    padding: 50px 30px;
+    border-radius: 24px;
+    background-color: var(--panel);
+    color: #ffffff;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ffffff, var(--boya), #7ee8d6, #ffffff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colores 6s linear infinite;
+}
+
+@keyframes colores {
+    to {
+        background-position: 200% center;
+    }
+}
+
+header p {
+    margin: 12px 0 0;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+/* =================================
+MENÚ
+================================= */
+
+nav {
+    width: 90%;
+    max-width: 1100px;
+    margin: 18px auto 0;
+    border-radius: 16px;
+    background-color: var(--panel);
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    padding: 10px;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: var(--boya);
+    color: var(--titulo);
+}
+
+/* Botón de modo oscuro */
+.btn-modo {
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-modo:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Muestra un icono u otro según el tema */
+.icono-sol {
+    display: none;
+}
+
+html[data-theme="dark"] .icono-luna {
+    display: none;
+}
+
+html[data-theme="dark"] .icono-sol {
+    display: inline;
+}
+
+/* =================================
+CONTENIDO
+================================= */
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto 0;
+}
+
+main > h2 {
+    margin: 0 0 24px;
+    color: var(--titulo);
+    font-family: var(--fuente-titulos);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+/* =================================
+TARJETAS
+================================= */
+
+.padre {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.nieto {
+    padding: 22px;
+    border: 1px solid var(--linea);
+    border-radius: 16px;
+    background-color: var(--tarjeta);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.nieto h2 {
+    margin: 0 0 14px;
+    color: var(--titulo);
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.nieto img {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.nieto p {
+    margin: 14px 0 20px;
+}
+
+/* =================================
+BOTONES
+================================= */
+
+.btn {
+    display: inline-block;
+    padding: 12px 26px;
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--acento);
+    color: var(--texto-boton);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 5px 0 var(--acento-oscuro);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+}
+
+.btn:hover {
+    background-color: var(--acento-oscuro);
+}
+
+.btn:active {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 var(--acento-oscuro);
+    background-color: var(--boya);
+    color: var(--titulo);
+}
+
+/* =================================
+SECCIONES
+================================= */
+
+section {
+    margin-top: 32px;
+    padding: 36px;
+    border: 1px solid var(--linea);
+    border-radius: 16px;
+    background-color: var(--tarjeta);
+    text-align: center;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+section h2 {
+    margin: 0 0 8px;
+    color: var(--titulo);
+    font-family: var(--fuente-titulos);
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+
+section p {
+    margin: 0 0 22px;
+}
+
+/* =================================
+PIE DE PÁGINA
+================================= */
+
+footer {
+    width: 90%;
+    max-width: 1100px;
+    margin: 48px auto 16px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    background-color: var(--panel);
+    color: #ffffff;
+    text-align: center;
+}
+
+footer p {
+    margin: 0 0 6px;
+}
+
+.redes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 14px 0 20px;
+}
+
+.redes a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.redes a:hover {
+    background-color: var(--boya);
+    color: var(--titulo);
+}
+
+.subir {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 8px 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.subir:hover {
+    background-color: var(--boya);
+    color: var(--titulo);
+}
+
+/* =================================
+AVISO (mensaje flotante)
+================================= */
+
+.aviso {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    max-width: 90%;
+    padding: 14px 24px;
+    border-radius: 12px;
+    background-color: #0d2b3e;
+    color: #ffffff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.aviso.visible {
+    opacity: 1;
+}
+
+/* =================================
+DISEÑO PARA CELULARES
+================================= */
+
+@media (max-width: 700px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}

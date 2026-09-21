@@ -1,0 +1,331 @@
+/* =================================================== */
+/*   RESET BÁSICO Y ESTILOS GENERALES                  */
+/* =================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Scroll suave al hacer clic en los botones del menú */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* MODO OSCURO */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* =================================================== */
+/*   ENCABEZADO FIJO Y MENÚ DE BOTONES                 */
+/* =================================================== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #0f172a;
+    padding: 10px 20px 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    color: white;
+    text-align: center;
+    margin: 5px 0;
+}
+
+header hr {
+    border: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 8px 0 12px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+nav ul li a {
+    display: inline-block;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 25px;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+nav ul li a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(124, 58, 237, 0.5);
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+}
+
+nav ul li a:active {
+    transform: translateY(0);
+}
+
+/* =================================================== */
+/*   TÍTULO PRINCIPAL ANIMADO (H1)                     */
+/* =================================================== */
+.titulo-animado {
+    font-size: 2.2rem;
+    font-weight: 800;
+    display: inline-block;
+
+    /* Texto con degradado de colores dinámico */
+    background: linear-gradient(270deg, #38bdf8, #a78bfa, #22d3ee, #38bdf8);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Movimiento de colores y flotación */
+    animation: movimientoGradiente 6s ease infinite, floatTitle 3s ease-in-out infinite;
+    transition: transform 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.titulo-animado:hover {
+    transform: scale(1.03);
+}
+
+@keyframes floatTitle {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
+}
+
+@keyframes movimientoGradiente {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =================================================== */
+/*   TARJETAS (padre / hijo / nieto)                   */
+/* =================================================== */
+.padre {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.hijo1,
+.hijo2,
+.hijo3 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.nieto,
+.nieto2,
+.nieto3 {
+    flex: 1 1 300px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.4s;
+}
+
+.nieto:hover,
+.nieto2:hover,
+.nieto3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.nieto h2,
+.nieto2 h2,
+.nieto3 h2 {
+    padding: 18px 20px 10px;
+    font-size: 1.3rem;
+}
+
+.nieto img,
+.nieto2 img,
+.nieto3 img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.nieto p,
+.nieto2 p,
+.nieto3 p {
+    padding: 15px 20px 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+body.dark-mode .nieto,
+body.dark-mode .nieto2,
+body.dark-mode .nieto3 {
+    background: #1e1e1e;
+}
+
+body.dark-mode .nieto p,
+body.dark-mode .nieto2 p,
+body.dark-mode .nieto3 p {
+    color: #bbb;
+}
+
+/* Evita que el menú fijo tape los títulos al hacer scroll */
+.nieto2,
+.nieto3,
+.hijo4 {
+    scroll-margin-top: 150px;
+}
+
+/* =================================================== */
+/*   GALERÍA DE FOTOS                                  */
+/* =================================================== */
+.hijo4 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hijo4 h2 {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
+.galeria-contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.galeria-visor {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    background: #0f172a;
+}
+
+/* Solo se ve la imagen activa */
+.img-galeria {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.img-galeria.active {
+    opacity: 1;
+}
+
+.btn-galeria {
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.btn-galeria:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 14px rgba(124, 58, 237, 0.5);
+}
+
+/* Puntos indicadores (los crea el JavaScript) */
+.galeria-indicadores {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.galeria-indicadores > * {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #b8c0cc;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.galeria-indicadores > *.active,
+.galeria-indicadores > *.activo {
+    background: #7c3aed;
+    transform: scale(1.3);
+}
+
+/* =================================================== */
+/*   PIE DE PÁGINA                                     */
+/* =================================================== */
+.pie {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    background: #0f172a;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+}
+
+/* =================================================== */
+/*   CELULAR                                           */
+/* =================================================== */
+@media (max-width: 600px) {
+    nav ul li a {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .titulo-animado {
+        font-size: 1.6rem;
+    }
+
+    .nieto2,
+    .nieto3,
+    .hijo4 {
+        scroll-margin-top: 200px;
+    }
+
+    .galeria-visor {
+        height: 260px;
+    }
+
+    .btn-galeria {
+        width: 38px;
+        height: 38px;
+    }
+}

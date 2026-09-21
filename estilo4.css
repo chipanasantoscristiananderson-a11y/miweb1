@@ -1,0 +1,463 @@
+/* =========================================================
+   El Marketing Digital — estilos
+   Paleta: noche digital (azul profundo) + acento violeta→cian
+   ========================================================= */
+
+:root {
+  --bg: #0B1020;
+  --bg-alt: #121933;
+  --card: #161f3d;
+  --card-border: #253159;
+  --text: #E7EAF6;
+  --text-muted: #9AA4C7;
+  --accent-1: #8B5CF6;   /* violeta */
+  --accent-2: #22D3EE;   /* cian */
+  --accent-3: #F472B6;   /* rosa, uso puntual */
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-full: 999px;
+  --shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.6);
+  --font-display: 'Poppins', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #F5F6FB;
+    --bg-alt: #FFFFFF;
+    --card: #FFFFFF;
+    --card-border: #E3E7F5;
+    --text: #171B2E;
+    --text-muted: #565F82;
+    --shadow: 0 20px 45px -20px rgba(60, 70, 130, 0.25);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, var(--bg-alt), var(--bg) 60%);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  padding-bottom: 6rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Encabezado ---------- */
+
+header {
+  padding: 4.5rem 1.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: -40% -10% auto -10%;
+  height: 320px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.35), transparent 70%);
+  filter: blur(10px);
+  z-index: 0;
+}
+
+header h1 {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  margin: 0;
+  letter-spacing: -0.02em;
+  background: linear-gradient(100deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-1));
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: brillo-titulo 6s linear infinite, aparecer-titulo 0.9s ease-out both;
+}
+
+@keyframes brillo-titulo {
+  to {
+    background-position: 300% center;
+  }
+}
+
+@keyframes aparecer-titulo {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header hr {
+  position: relative;
+  z-index: 1;
+  width: min(220px, 60%);
+  margin: 1.5rem auto 0;
+  border: none;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+}
+
+nav ul {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+}
+
+nav ul li a {
+  display: inline-block;
+  padding: 0.6rem 1.6rem;
+  border-radius: var(--radius-full);
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  background: linear-gradient(120deg, var(--accent-1), var(--accent-2));
+  color: #0B1020;
+  outline: none;
+}
+
+nav ul li a:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* ---------- Contenido principal ---------- */
+
+.Padre {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hijo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.nieto {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* alterna el lado de la imagen en tarjetas pares, para variar el ritmo visual */
+.nieto:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.nieto .marco-imagen {
+  flex: 1 1 260px;
+  max-width: 300px;
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+}
+
+.nieto .marco-imagen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+.nieto .marco-imagen:hover img {
+  transform: scale(1.04);
+}
+
+.nieto .marco-imagen img:active {
+  transform: scale(0.98);
+}
+
+.nieto .contenido {
+  flex: 2 1 320px;
+  min-width: 0;
+}
+
+.nieto.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nieto h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  margin-top: 0;
+  margin-bottom: 1.1rem;
+  color: var(--text);
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.nieto h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  height: 1.15em;
+  width: 5px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+}
+
+.nieto p {
+  color: var(--text-muted);
+  max-width: 72ch;
+}
+
+.nieto strong {
+  color: var(--text);
+}
+
+.nieto ul {
+  margin: 1rem 0 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.nieto ul li {
+  background: var(--bg-alt);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.2rem;
+  color: var(--text-muted);
+}
+
+.nieto ul li strong {
+  color: var(--accent-2);
+}
+
+.nieto a {
+  color: var(--accent-2);
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+}
+
+.nieto a:hover,
+.nieto a:focus-visible {
+  color: var(--accent-1);
+}
+
+/* ---------- Galería de imágenes ---------- */
+
+.galeria {
+  max-width: 1100px;
+  margin: 2.5rem auto 0;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.galeria img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.galeria img:hover,
+.galeria img:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Pie de página ---------- */
+
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  color: var(--text-muted);
+}
+
+footer p {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ---------- Imagen ampliada (lightbox) ---------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 9, 20, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow-y: auto;
+  z-index: 100;
+  animation: aparecer-lightbox 0.25s ease;
+}
+
+@keyframes aparecer-lightbox {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox img {
+  max-width: min(90vw, 900px);
+  max-height: none;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  margin: auto;
+}
+
+.lightbox-cerrar {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  color: var(--text);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 101;
+}
+
+/* ---------- Botones flotantes de subir / bajar ---------- */
+
+.botones-scroll {
+  position: fixed;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 40;
+}
+
+.botones-scroll button {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.botones-scroll button:hover,
+.botones-scroll button:focus-visible {
+  transform: translateY(-3px);
+  background: linear-gradient(120deg, var(--accent-1), var(--accent-2));
+  color: #0B1020;
+  outline: none;
+}
+
+.botones-scroll button:active {
+  transform: scale(0.9);
+}
+
+/* ---------- Botón flotante de inicio ---------- */
+
+.boton-inicio {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  color: #0B1020;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.4rem;
+  box-shadow: var(--shadow);
+  border: none;
+  cursor: pointer;
+  z-index: 40;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.boton-inicio:hover,
+.boton-inicio:focus-visible {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 24px 50px -18px rgba(139, 92, 246, 0.65);
+  outline: none;
+}
+
+.boton-inicio:active {
+  transform: scale(0.92);
+}
+
+/* ---------- Accesibilidad: menos movimiento ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  header h1 {
+    animation: none;
+  }
+  .nieto {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes somos</title>
+    <link rel="stylesheet" href="estilo2.css">
+</head>
+<body>
+
+    <header>
+        <h1 class="titulo-animado">Negocios en Línea</h1>
+        <hr>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#ia">Inteligencia Artificial</a></li>
+                <li><a href="#portatil">Tecnología Portátil</a></li>
+                <li><a href="#redes">Redes y Conectividad</a></li>
+                <li><a href="#ciberseguridad">Ciberseguridad</a></li>
+                <li><a href="#desarrollo">Desarrollo Web</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#noticias">Noticias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="padre">
+        <div class="hijo1">
+            <div class="nieto">
+                <h2>VISIÓN</h2>
+                <img src="presentacion/imagen.jpg" alt="Visión">
+                <p>Somos una empresa líder en Soluciones tecnológicas innovadoras, brindando herramientas digitales que mejoren la vida de las personas y organizaciones.</p>
+            </div>
+            <div class="nieto">
+                <h2>MISIÓN</h2>
+                <img src="presentacion/imagen1.jpg" alt="Misión">
+                <p>Ofrecemos servicios tecnológicos de calidad mediante el uso de inteligencia artificial, redes, software y nuevas tecnologías, con responsabilidad y compromiso.</p>
+            </div>
+            <div class="nieto">
+                <h2>TRABAJO COOPERATIVO</h2>
+                <img src="presentacion/imagen2.jpg" alt="Trabajo Cooperativo">
+                <p>Promovemos el trabajo en equipo, la comunicación y la colaboración para desarrollar soluciones eficientes, compartiendo conocimientos y logrando compromiso.</p>
+            </div>
+        </div>
+
+        <div class="hijo2">
+            <div class="nieto2" id="ia">
+                <h2>Inteligencia Artificial</h2>
+                <img src="presentacion/imagen3.jpg" alt="Inteligencia Artificial">
+                <p>La Inteligencia Artificial (IA) representa uno de los campos más transformadores de la tecnología actual. Ha dejado atrás la fase de simple experimentación y asombro para integrarse de lleno en los procesos productivos, la ciencia, la medicina y la vida cotidiana.</p>
+            </div>
+            <div class="nieto2" id="portatil">
+                <h2>Tecnología Portátil</h2>
+                <img src="presentacion/imagen4.jpg" alt="Tecnología Portátil">
+                <p>La tecnología portátil (también conocida como tecnología ponible o wearable technology) engloba a todos aquellos dispositivos y equipos electrónicos inteligentes que se llevan puestos en alguna parte del cuerpo o se incorporan a la ropa y accesorios como una extensión de este.</p>
+            </div>
+            <div class="nieto2" id="redes">
+                <h2>Redes y Conectividad</h2>
+                <img src="presentacion/imagen5.jpg" alt="Redes y Conectividad">
+                <p>Las redes y la conectividad forman la columna vertebral del mundo digital actual, permitiendo el intercambio rápido, seguro y masivo de datos entre dispositivos, personas y sistemas a cualquier escala.</p>
+            </div>
+        </div>
+
+        <div class="hijo3">
+            <div class="nieto3" id="ciberseguridad">
+                <h2>Ciberseguridad</h2>
+                <img src="presentacion/imagen6.jpg" alt="Ciberseguridad">
+                <p>La ciberseguridad es la práctica de proteger sistemas, redes, dispositivos y datos contra ataques digitales, robos, daños o accesos no autorizados. En un entorno hiperconectado, se ha convertido en una prioridad estratégica para la supervivencia de organizaciones, gobiernos e individuos.</p>
+            </div>
+            <div class="nieto3" id="desarrollo">
+                <h2>Desarrollo Web</h2>
+                <img src="presentacion/imagen7.jpg" alt="Desarrollo Web">
+                <p>El Desarrollo Web abarca la creación y mantenimiento de sitios web mediante código estructurado, diseño adaptativo y lógica del lado del cliente o servidor para brindar experiencias interactivas y eficientes.</p>
+            </div>
+            <div class="nieto3" id="noticias">
+                <h2>Noticias</h2>
+                <img src="presentacion/imagen8.jpg" alt="Noticias">
+                <p>Una noticia es el relato objetivo de un acontecimiento novedoso, actual y de interés público, que se difunde a través de los medios de comunicación (prensa escrita, radio, televisión o internet). Su propósito principal es informar de manera veraz y oportuna sobre hechos que alteran o interesan la vida de una sociedad.</p>
+            </div>
+        </div>
+
+        <!-- GALERÍA DINÁMICA CON JAVASCRIPT -->
+        <div class="hijo4" id="galeria">
+            <h2>Galería de fotos</h2>
+
+            <div class="galeria-contenedor">
+                <button id="btn-prev" class="btn-galeria">&#10094;</button>
+
+                <div class="galeria-visor">
+                    <img src="presentacion/1.jpg" alt="Imagen 1" class="img-galeria active">
+                    <img src="presentacion/2.jpg" alt="Imagen 2" class="img-galeria">
+                    <img src="presentacion/3.jpg" alt="Imagen 3" class="img-galeria">
+                    <img src="presentacion/4.jpg" alt="Imagen 4" class="img-galeria">
+                    <img src="presentacion/5.jpg" alt="Imagen 5" class="img-galeria">
+                    <img src="presentacion/7.jpg" alt="Imagen 6" class="img-galeria">
+                    <img src="presentacion/photo.jpg" alt="Imagen 7" class="img-galeria">
+                    <img src="presentacion/8.jpg" alt="Imagen 8" class="img-galeria">
+                    <img src="presentacion/9.jpg" alt="Imagen 9" class="img-galeria">
+                    <img src="presentacion/10.jpg" alt="Imagen 10" class="img-galeria">
+                </div>
+
+                <button id="btn-next" class="btn-galeria">&#10095;</button>
+            </div>
+
+            <!-- Puntos indicadores inferiores -->
+            <div class="galeria-indicadores" id="indicadores"></div>
+        </div>
+    </div>
+
+    <footer class="pie">
+        derechos reservados por el diseñador: CRISTIAN CHIPANA SANTOS 2026
+    </footer>
+
+    <script src="dinamica2.js"></script>
+</body>
+</html>
